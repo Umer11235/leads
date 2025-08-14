@@ -159,6 +159,7 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
 
     console.log("updated payloadss" ,updatePayload )
     // First update the current record
+     setselectedId(id);
     const updateResponse = await apiService.putData(
       `/Contact/${id}`, 
       updatePayload, 
