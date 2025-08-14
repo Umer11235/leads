@@ -37,10 +37,6 @@ const ContactSchema = Yup.object().shape({
 
 
 
-
-
-
-
 interface IContact {
   id: string;
   category: string;
@@ -93,8 +89,35 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
       // const response = await apiService.fetchData("/contact/v3",{});
       const response = await apiService.fetchData("/non-followup",{});
       setData(response.data);
-      //  console.error("Data fetched sdduccessfully:", response);
-      // console.log("Data fetched contact successfully:", response.data);
+  
+
+   const list = response.data;
+
+    if (list.length > 0) {
+      // Pehla record initial values me set kar do
+      const first = list[0];
+      setInitialData({
+        id: first.id,
+        name: first.name,
+        designation: first.designation,
+        businessName: first.businessName,
+        website: first.website,
+        phoneNumber: first.phoneNumber,
+        email: first.email,
+        facebook: first.facebook,
+        insta: first.insta,
+        linkedIn: first.linkedIn,
+        address: first.address,
+        state: first.state,
+        city: first.city,
+        categoryId: first.categoryId,
+        category: first.category,
+        followUpDate: first.followUpDate ? first.followUpDate.split('T')[0] : '',
+        followUpRemarks: first.followUpRemarks
+      });
+    }
+
+
     } catch (err) {
       console.log("Failed to fetch data");
     } finally {
