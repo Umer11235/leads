@@ -115,6 +115,9 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
         followUpDate: first.followUpDate ? first.followUpDate.split('T')[0] : '',
         followUpRemarks: first.followUpRemarks
       });
+    
+      setselectedId(first.id);
+      
     }
 
 
@@ -205,7 +208,6 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
       `/non-followup/next/0`, 
       {}
     );
-console.error('tt',response.data)
     // const response=await axios.get("http://localhost/test/non-followup/next/0")
 
     if (response.isSuccess) {
