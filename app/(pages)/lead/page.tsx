@@ -51,6 +51,7 @@ interface IContact {
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [selectedId, setselectedId] = useState("");
+  const [selectedPrevId, setselectedPrevId] = useState("");
   const { isAuthenticated } = useAuthRedirect();
    const [filters, setFilters] = useState<Record<string, any>>({});
     const [data, setData] = useState<IContact[]>([]);
@@ -159,7 +160,8 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
 
     console.log("updated payloadss" ,updatePayload )
     // First update the current record
-     setselectedId(id);
+     setselectedPrevId(id);
+     alert(id)
     const updateResponse = await apiService.putData(
       `/Contact/${id}`, 
       updatePayload, 
@@ -636,7 +638,7 @@ id: response.data.id,
         <button
           type="button"
           className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:bg-blue-400"
-        onClick={() => fetchDatabyPrev(selectedId)}
+        onClick={() => fetchDatabyPrev(selectedPrevId)}
         >
           Previous
         </button>
