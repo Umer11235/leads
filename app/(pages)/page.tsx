@@ -20,7 +20,7 @@ const Home = () => {
 
 
 const handleFetchData= async()=>{
-  const response =await apiService.fetchData("/Contact/stats")
+  const response =await apiService.fetchData("/stats")
   console.log("response",response)
   if (response.isSuccess) {
   settotal(response.data.totalLeads);
