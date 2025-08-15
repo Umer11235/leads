@@ -401,19 +401,30 @@ const [initialData, setInitialData] = useState<IContactFormValues>({
                     id="followUpDate"
                     name="followUpDate"
                     className="border rounded w-full p-2"
-                      value={
-    values.followUpDate instanceof Date ? 
-      values.followUpDate.toISOString().split('T')[0] : 
-      values.followUpDate === null || values.followUpDate === '' ? 
-        '' : 
-        values.followUpDate
-  }
-  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-    setFieldValue(
-      'followUpDate', 
-      e.target.value ? new Date(e.target.value) : null
-    );
-  }}
+  //                     value={
+  //   values.followUpDate instanceof Date ? 
+  //     values.followUpDate.toISOString().split('T')[0] : 
+  //     values.followUpDate === null || values.followUpDate === '' ? 
+  //       '' : 
+  //       values.followUpDate
+  // }
+  // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setFieldValue(
+  //     'followUpDate', 
+  //     e.target.value ? new Date(e.target.value) : null
+  //   );
+
+  
+  //}}
+
+  value={
+  values.followUpDate
+    ? new Date(values.followUpDate).toISOString().split('T')[0]
+    : ''
+}
+onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+  setFieldValue('followUpDate', e.target.value);
+}}
                   />
                 </div>
                 <div className="w-full md:w-2/3 px-2 mb-4">
